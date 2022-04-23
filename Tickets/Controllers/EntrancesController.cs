@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Tickets.Data;
 using Tickets.Data.Entities;
+using Tickets.Models;
 
 namespace Tickets.Controllers
 {
@@ -21,6 +22,7 @@ namespace Tickets.Controllers
         }
 
         // GET: Entrances
+        [HttpGet]
         public async Task<IActionResult> CheckTicket()
         {
             return View();
@@ -28,10 +30,10 @@ namespace Tickets.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> CheckTicket(Ticket ticket) {
-            int? n = ticket.Id;
+        public async Task<IActionResult> CheckTicket(TicketViewModel ticketVM) {
+            int? n = ticketVM.id;
             if (ModelState.IsValid) { }
-            Ticket tic = await _context.Tickets.FindAsync(ticket.Id);
+            Ticket tic = await _context.Tickets.FirstOrDefaultAsync(t=>t.Id==ticketVM.id);
             if (tic == null) {
                 return View();
             }
