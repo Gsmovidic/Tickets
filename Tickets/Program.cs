@@ -1,11 +1,11 @@
 using Tickets.Data;
 using Microsoft.EntityFrameworkCore;
-
-
+using Tickets.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<SeedDb>();
+builder.Services.AddScoped<ICombosHelper, CombosHelper>();
 
 
 builder.Services.AddDbContext<DataContext>(o =>

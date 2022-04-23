@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Tickets.Data.Entities;
+using Tickets.Models;
 
 namespace Tickets.Data
 {
@@ -19,5 +20,7 @@ namespace Tickets.Data
             modelBuilder.Entity<Entrance>().HasIndex(e=>e.Id).IsUnique();
             
         }
+
+        public DbSet<Tickets.Models.TicketVM2> TicketVM2 { get; set; }
     }
 }

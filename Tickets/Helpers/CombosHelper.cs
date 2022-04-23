@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Tickets.Data;
 
 namespace Tickets.Helpers
@@ -13,16 +14,20 @@ namespace Tickets.Helpers
             _context = context;
         }
 
-        public Task<IEnumerable<SelectListItem>> GetComboEntrancesAsync()
+        public async Task<IEnumerable<SelectListItem>> GetComboEntrancesAsync()
         {
-            throw new NotImplementedException();
+            List<SelectListItem> list = await _context.Entrances.Select(e => new SelectListItem
+            {
+                Text = e.Description,
+                Value = e.Id.ToString()
+            })
+               .OrderBy(e => e.Text)
+               .ToListAsync();
 
-
+            list.Insert(0, new SelectListItem { Text = "[Seleccione una entrada...", Value = "0" });
+            return list;
         }
 
-        public Task<IEnumerable<SelectListItem>> GetComboTicketsAsync(int entranceId)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -6,7 +6,5 @@ namespace Tickets.Helpers
     {
         Task<IEnumerable<SelectListItem>> GetComboEntrancesAsync();
 
-        Task<IEnumerable<SelectListItem>> GetComboTicketsAsync(int entranceId);
-
     }
 }
