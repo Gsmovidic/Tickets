@@ -9,6 +9,6 @@ namespace Tickets.Data.Entities
         [MaxLength(50,ErrorMessage="El campo {0} debe tener maximo {1} caractéres")]
         public string Description  { get; set; }
 
-        public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Ticket>? Tickets { get; set; }
     }
 }

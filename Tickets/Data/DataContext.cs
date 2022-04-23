@@ -8,9 +8,9 @@ namespace Tickets.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
-        DbSet<Entrance> Entrances { get; set; }
+        public DbSet<Entrance> Entrances { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -45,29 +45,27 @@ namespace Tickets.Migrations
 
             modelBuilder.Entity("Tickets.Data.Entities.Ticket", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Document")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("EntranceId")
+                    b.Property<int?>("EntranceId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<bool>("WasUsed")
+                    b.Property<bool?>("WasUsed")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -84,9 +82,7 @@ namespace Tickets.Migrations
                 {
                     b.HasOne("Tickets.Data.Entities.Entrance", "Entrance")
                         .WithMany("Tickets")
-                        .HasForeignKey("EntranceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EntranceId");
 
                     b.Navigation("Entrance");
                 });
