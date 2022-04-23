@@ -1,4 +1,6 @@
-﻿namespace Tickets.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace Tickets.Models
 {
     public class TicketVM2
     {
@@ -10,5 +12,7 @@
         public string Name  { get; set; }
 
         public int EntranceId { get; set; }
+
+    
     }
 }
